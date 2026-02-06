@@ -50,31 +50,3 @@ class CourseAssignPage(BasePage):
         self.page.locator(self.profile_btn_xpath).click()
         self.page.locator(self.logout_btn_xpath).click()
         self.wait_for_network()
-
-
-# Course Assign:
-# Click on Course_name using xpath:
-# //*[@id="crudTable"]/tbody/tr[1]/td[3]/a
-# Id of users button:
-# base-questionsTab
-# Id of users "+" button:
-# userAssessmentForm
-# Placeholder of selction of user:
-# Select users
-# Value:
-# Abc
-# Mandatory radio button id:
-# IsMandatory
-# Submit button xpath:
-# //*[@id="newUserAssignmentForm"]/div/div[3]/div/button[2]
-# Then click on save btn:
-# btn_save
-# Click on aagam profile btn:
-# //*[@id="navbar-mobile"]/ul[2]/li[3]/a
-# Click on Logout button:
-# //*[@id="navbar-mobile"]/ul[2]/li[3]/div/a[3]
-
-# Verification course assigned or not
-# Click on Team dropdown: //*[@id="setup-training"]/a
-# Click on Users: //*[@id="setup-training"]/ul/li[1]/a
-# Click on Abc user: //*[@id="crudTable"]/tbody/tr[1]/td[2]/span/a

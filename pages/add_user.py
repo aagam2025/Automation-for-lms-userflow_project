@@ -49,23 +49,3 @@ class Add_User(BasePage):
         # check records per page
         self.page.locator(self.records_per_page_xpath).select_option('100')
         self.wait_for_network()
-
-# Team xpath:
-# //*[@id="setup-training"]/a
-# Users list xpath:
-# //*[@id="setup-training"]/ul/li[1]/a
-# Add user button:
-# //*[@id="btn-group"]/a
-# Name btn:
-# //*[@id="main-wrapper"]/div[3]/div/div[2]/div/form/div/div[2]/div/div[2]/div/div/input
-# Email id:
-# //*[@id="main-wrapper"]/div[3]/div/div[2]/div/form/div/div[2]/div/div[5]/div/div/input
-# Manager Roles:
-# //*[@id="main-wrapper"]/div[3]/div/div[2]/div/form/div/div[2]/div/div[14]/div/div/div/span/span[1]/span/ul/li/input
-# User roles:
-# //*[@id="main-wrapper"]/div[3]/div/div[2]/div/form/div/div[2]/div/div[15]/div[1]/div
-# value: user
-# Save button id: btn_save
-# Cancel button xpath:
-# //*[@id="saveActions"]/a
-# REcords per page: //*[@id="crudTable_length"]/label/select

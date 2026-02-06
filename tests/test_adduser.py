@@ -1,5 +1,3 @@
-# from pages.course_page import CoursePage
-# from config.config import LOGIN_EMAIL, LOGIN_PASSWORD
 from pages.add_user import Add_User
 from config.config import *
 
@@ -20,8 +18,3 @@ def test_add_user(page):
     # Step 4: Verify user was added (this is a placeholder, adjust as needed)
     user_exists = page.locator(f"text={USEREMAIL}").is_visible()
     assert user_exists, "User was not added successfully"
-
-# def test_course_flow(page):
-#     course = CoursePage(page)
-
-   

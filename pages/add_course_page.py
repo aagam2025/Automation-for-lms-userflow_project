@@ -22,27 +22,24 @@ class Add_Course(BasePage):
 
     def add_course(self):
         self.click(self.add_course_btn_xpath)
-        self.page.wait_for_timeout(5000)  # Wait for 5 seconds
+        self.page.wait_for_timeout(5000)
 
-        # Pass your XPath string directly into the locator
-        # btn = self.page.locator(self.course_format_dropdown_xpath).click()
-        # btn.select_option(label="XAPI")
         self.click(self.course_format_dropdown_xpath)
         self.page.locator(self.course_format_dropdown_xpath).select_option(label="XAPI")
         
         self.fill(self.ref_input_xpath, "Tt_course")
         self.fill(self.title_input_xpath, "Tt_course")
-        # date
+        
         self.page.click("#content_updated_at")
         self.page.wait_for_timeout(2000)
         self.page.click(f"xpath={self.date_xpath}")
         self.page.wait_for_timeout(2000)
-        # attempts
+        
         self.page.locator("#AllowedAttempts").select_option("3")
-        # package
+        
         self.page.wait_for_timeout(2000)
         self.page.locator("#Package_file_input").set_input_files(r"C:\Users\Aagam Desai\Downloads\Infosec Course (2).zip")
-        self.page.wait_for_timeout(3000)  # Wait for file upload to complete
-        # self.page.wait_for_selector("#btn_save:enabled", timeout=10000)  # Wait for save button to be enabled
+        self.page.wait_for_timeout(3000)
+        
         self.page.locator("#btn_save").click(no_wait_after=True)
         self.wait_for_network()

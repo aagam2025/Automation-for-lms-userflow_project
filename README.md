@@ -34,7 +34,6 @@ tests/
 
 ### Prerequisites
 - Python 3.7+
-- Node.js (for Playwright browser installation)
 
 ### Installation
 1. Clone the repository:
@@ -64,6 +63,3 @@ pytest
 ## Notes
 - All test data (emails, course names, etc.) are for demo purposes.
 - No real user data is included.
-
-## License
-MIT License

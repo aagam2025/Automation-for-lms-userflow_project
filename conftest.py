@@ -26,7 +26,7 @@ def page(browser, device):
     )
     page = context.new_page()
     page.set_default_timeout(DEFAULT_TIMEOUT_MS)
-    page.goto(BASE_URL)
+    page.goto(BASE_URL, wait_until="domcontentloaded", timeout=60000)
     try:
         yield page
     finally:

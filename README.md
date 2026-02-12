@@ -16,18 +16,19 @@ requirements.txt      # Python dependencies
 config/
   config.py           # Project configuration (URLs, credentials, device settings)
 pages/
-  base_page.py        # Base page class for common actions
   login_page.py       # Login page actions
   add_course_page.py  # Add course actions
   add_user.py         # Add user actions
   course_page.py      # Course management actions
   course_assign_page.py # Course assignment actions
+  course_start.py     # Course start actions
 tests/
   test_login.py       # Login tests
   test_addcourse.py   # Add course tests
   test_adduser.py     # Add user tests
-  test_course.py      # Course search tests
+  test_course_search.py # Course search tests
   test_courseassign.py# Course assignment tests
+  test_course_start.py # Course start tests
 ```
 
 ## Getting Started

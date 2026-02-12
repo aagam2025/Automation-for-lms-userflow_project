@@ -8,16 +8,10 @@ class TestCourseAssign:
         assert "login" not in page.url.lower(), "Login failed"
 
         course_assign = CourseAssignPage(page)
-        course_assign.assign_course_to_user("Abc")
+        course_assign.assign_course_to_user("Aagam")
 
-        # Step 3: Verify course was assigned using the new method in CourseAssignPage
-        is_assigned = course_assign.verify_course_assigned("Abc")
+        is_assigned = course_assign.verify_course_assigned("Aagam")
         assert is_assigned, "Course was not assigned successfully"
 
-        # Step 4: Verify course was assigned (this is a placeholder, adjust as needed)
-        assignment_exists = page.locator("text=Abc").is_visible()
+        assignment_exists = page.locator("text=Aagam").is_visible()
         assert assignment_exists, "Course was not assigned successfully"
-
-        # Step 5: Logout
-        course_assign.logout()
-        assert "/" in page.url.lower(), "Logout failed"

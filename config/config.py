@@ -1,25 +1,42 @@
 import os
 from dataclasses import dataclass
+from dotenv import load_dotenv
 
-BASE_URL = "https://qaautomationtesting1.empowerlms.com/"
-LOGIN_EMAIL = "aagam.d+1@empowerelearning.com"
-LOGIN_PASSWORD = "Aagam@2026"
-USER_NAME = "Abc"
-USEREMAIL = "aslf1y49@mailinator.com"
+
+# Load environment variables from .env file
+load_dotenv()
+
+# -----------------------------
+# Application Configuration
+# -----------------------------
+BASE_URL = os.getenv("BASE_URL", "https://qaautomationtesting1.empowerlms.com/")
+LOGIN_EMAIL = os.getenv("LOGIN_EMAIL", "")
+LOGIN_PASSWORD = os.getenv("LOGIN_PASSWORD", "")
+LOGIN_EMAIL_1 = os.getenv("LOGIN_EMAIL_1", "")
+LOGIN_PASSWORD_1 = os.getenv("LOGIN_PASSWORD_1", "")
+USER_NAME = os.getenv("USER_NAME", "Abc")
+USEREMAIL = os.getenv("USEREMAIL", "")
+COURSE_ID = int(os.getenv("COURSE_ID", "719"))
+CLIENT_ID = os.getenv("CLIENT_ID", "")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET", "")
+TOKEN = os.getenv("TOKEN", "")
+
+COURSE_PLAYER_PATH = "/local/courses/{course_id}/index.html"
 
 # -----------------------------
 # Timeouts (ms)
 # -----------------------------
-DEFAULT_TIMEOUT_MS = 30_000
-SHORT_TIMEOUT_MS = 5_000
+DEFAULT_TIMEOUT_MS = int(os.getenv("DEFAULT_TIMEOUT_MS", "30000"))
+SHORT_TIMEOUT_MS = int(os.getenv("SHORT_TIMEOUT_MS", "5000"))
 
-
-
+# -----------------------------
 # Headless toggle
 # Default = headed (visible)
 # HEADLESS=1 -> headless
 # HEADLESS=0 -> headed
+# -----------------------------
 HEADLESS = os.getenv("HEADLESS", "0").strip().lower() not in {"0", "false", "no"}
+
 @dataclass(frozen=True)
 class DeviceConfig:
     name: str

@@ -7,8 +7,8 @@ class CourseAssignPage(BasePage):
     users_btn_id = 'base-questionsTab'
     add_user_btn_xpath = '//*[@id="userAssessmentForm"]/i'
     user_selection_placeholder = 'Select users'
-    # mandatory_btn_id = 'IsMandatory'
     submit_btn_xpath = '//*[@id="newUserAssignmentForm"]/div/div[3]/div/button[2]'
+
     save_btn_id = 'btn_save'
     profile_btn_xpath = '//*[@id="navbar-mobile"]/ul[2]/li[3]/a'
     logout_btn_xpath = '//*[@id="navbar-mobile"]/ul[2]/li[3]/div/a[3]'
@@ -19,7 +19,12 @@ class CourseAssignPage(BasePage):
     def __init__(self, page):
         super().__init__(page)
 
-    # Methods to interact with the course assignment page would go here
+    def login(self, mail: str, password: str) -> None:
+        self.fill("#email", mail)
+        self.fill("#password-field", password)
+        self.page.get_by_role("button", name="Sign In with Mail").click()
+        self.wait_for_network()
+
     def assign_course_to_user(self, user_name: str):
         self.page.locator(self.course_name_xpath).click()
         self.page.locator(self.course_list_xpath).click()
@@ -29,9 +34,10 @@ class CourseAssignPage(BasePage):
         self.page.locator(f'#{self.users_btn_id}').click()
         self.wait_for_network()
         self.page.locator(self.add_user_btn_xpath).click()
+        self.page.locator(f'input[placeholder="{self.user_selection_placeholder}"]').click()
         self.page.locator(f'input[placeholder="{self.user_selection_placeholder}"]').fill(user_name)
-        self.page.locator(f'text={user_name}').click()
-        # self.page.locator(f'#{self.mandatory_btn_id}').click()
+        self.page.locator(f'li:has-text("{user_name}")').wait_for(state="visible", timeout=10000)
+        self.page.locator(f'li:has-text("{user_name}")').click()
         self.page.locator(self.submit_btn_xpath).click()
         self.page.locator(f'#{self.save_btn_id}').click()
         self.wait_for_network()
@@ -41,12 +47,6 @@ class CourseAssignPage(BasePage):
         self.page.locator(self.users_list_xpath).click()
         self.page.locator(self.specific_user_xpath).click()
         self.wait_for_network()
-        # Check if the course is listed for the user
         course_assigned = self.page.locator(f'text={user_name}').is_visible()
+
         return course_assigned
-        
-    
-    def logout(self):
-        self.page.locator(self.profile_btn_xpath).click()
-        self.page.locator(self.logout_btn_xpath).click()
-        self.wait_for_network()

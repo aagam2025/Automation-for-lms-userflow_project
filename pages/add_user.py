@@ -33,19 +33,12 @@ class Add_User(BasePage):
         self.page.locator(self.email_id_xpath).fill(email)
         self.page.locator(self.manager_roles_xpath).click()
         self.page.locator(f'li:has-text("Aagam")').click()
-        # self.page.locator(self.user_roles_xpath).click()
-        # self.page.locator(f'li:has-text("User")').click()
         self.page.locator(f'#{self.save_btn_id}').click()
-        # Ensure cancel button is visible before clicking
         cancel_btn = self.page.locator(self.cancel_btn_xpath)
         if cancel_btn.is_visible():
             cancel_btn.click()
         self.wait_for_network()
-
-        # check if user is added successfully by searching for the email or name in the users list - id is : text-filter-name
         self.page.locator('input#text-filter-name').fill(name)
         self.wait_for_network()
-
-        # check records per page
         self.page.locator(self.records_per_page_xpath).select_option('100')
         self.wait_for_network()

@@ -1,5 +1,4 @@
 from pages.base_page import BasePage
-import re
 
 class CourseStartPage(BasePage):
     COURSES_MENU_XPATH = '//*[@id="main-menu-navigation"]/li[2]/a'

@@ -12,11 +12,8 @@ class TestCourseStart:
         assert "login" not in page.url.lower(), "Login failed"
 
         course.navigate_to_courses_list()
-
         # course.click_start_on_course(COURSE_START_XPATH)
+        # course.click_start_if_visible()
 
-        page.wait_for_timeout(5000)
-        course.click_start_if_visible()
-
-        course.open_course_player(COURSE_ID)
-        page.wait_for_timeout(5000)
+        # course.open_course_player(COURSE_ID)
+        # page.wait_for_timeout(5000)

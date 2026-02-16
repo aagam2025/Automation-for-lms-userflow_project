@@ -1,5 +1,5 @@
 from pages.base_page import BasePage
-
+import re
 class CourseAssignPage(BasePage):
     course_name_xpath = '//*[@id="main-menu-navigation"]/li[1]/ul/li[5]/a'
     course_list_xpath = '//*[@id="main-menu-navigation"]/li[1]/ul/li[5]/ul/li[1]/a'
@@ -14,7 +14,7 @@ class CourseAssignPage(BasePage):
     logout_btn_xpath = '//*[@id="navbar-mobile"]/ul[2]/li[3]/div/a[3]'
     teams_btn_xpath = '//*[@id="setup-training"]/a'
     users_list_xpath = '//*[@id="setup-training"]/ul/li[1]/a'
-    specific_user_xpath = '//*[@id="crudTable"]/tbody/tr[1]/td[2]/span/a'
+    specific_user_xpath = '//*[@id="crudTable"]/tbody/tr[2]/td[2]/span/a'
 
     def __init__(self, page):
         super().__init__(page)
@@ -34,12 +34,14 @@ class CourseAssignPage(BasePage):
         self.page.locator(f'#{self.users_btn_id}').click()
         self.wait_for_network()
         self.page.locator(self.add_user_btn_xpath).click()
-        self.page.locator(f'input[placeholder="{self.user_selection_placeholder}"]').click()
-        self.page.locator(f'input[placeholder="{self.user_selection_placeholder}"]').fill(user_name)
-        self.page.locator(f'li:has-text("{user_name}")').wait_for(state="visible", timeout=10000)
-        self.page.locator(f'li:has-text("{user_name}")').click()
+        self.page.locator("span.select2-selection").click()
+        self.page.locator("input.select2-search__field").fill(user_name)
+        self.page.locator(
+            f'li.select2-results__option:text-is("{user_name}")'
+        ).click()
+        self.page.locator("body").click()
         self.page.locator(self.submit_btn_xpath).click()
-        self.page.locator(f'#{self.save_btn_id}').click()
+        # self.page.locator(f'#{self.save_btn_id}').click()
         self.wait_for_network()
 
     def verify_course_assigned(self, user_name: str) -> bool:

@@ -10,9 +10,9 @@ class TestAddCourse:
         assert "login" not in page.url.lower(), "Login failed"
         
 
-        add_course = Add_Course(page)
+        add_course_1 = Add_Course(page)
 
-        add_course.navigate_to_courses()
+        add_course_1.navigate_to_courses()
         assert "course" in page.url.lower(), "Did not reach courses page"
 
-        add_course.add_course()
+        add_course_1.add_course()

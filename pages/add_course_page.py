@@ -27,8 +27,8 @@ class Add_Course(BasePage):
         self.click(self.course_format_dropdown_xpath)
         self.page.locator(self.course_format_dropdown_xpath).select_option(label="XAPI")
         
-        self.fill(self.ref_input_xpath, "Tt_course")
-        self.fill(self.title_input_xpath, "Tt_course")
+        self.fill(self.ref_input_xpath, "Abc_course")
+        self.fill(self.title_input_xpath, "Abc_course")
         
         self.page.click("#content_updated_at")
         self.page.wait_for_timeout(2000)
@@ -41,5 +41,7 @@ class Add_Course(BasePage):
         self.page.locator("#Package_file_input").set_input_files(r"C:\Users\Aagam Desai\Downloads\Infosec Course (2).zip")
         self.page.wait_for_timeout(3000)
         
-        self.page.locator("#btn_save").click(no_wait_after=True)
-        self.wait_for_network()
+        # self.page.locator("#btn_save").click(no_wait_after=True)
+        self.page.locator("#btn_save").click(timeout=90000)
+        # self.page.wait_for_url("**/admin/course", timeout=90000)
+        # self.wait_for_network()

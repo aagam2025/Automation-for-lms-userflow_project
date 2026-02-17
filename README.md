@@ -75,7 +75,7 @@ sh
 Run all tests with:
 ```
 sh
-pytest
+   pytest
 ```
 
 ## Configuration

@@ -38,22 +38,43 @@ tests/
 
 ### Installation
 1. Clone the repository:
-   ```sh
+   
+```
+sh
    git clone <your-repo-url>
    cd Automation_of_Lms_User_flow
-   ```
-2. Install Python dependencies:
-   ```sh
+   
+```
+2. Create and activate a virtual environment:
+   
+```
+sh
+   python -m venv venv
+   # On Windows:
+   venv\Scripts\activate
+   # On macOS/Linux:
+   source venv/bin/activate
+   
+```
+3. Install Python dependencies:
+   
+```
+sh
    pip install -r requirements.txt
-   ```
-3. Install Playwright browsers:
-   ```sh
+   
+```
+4. Install Playwright browsers:
+   
+```
+sh
    playwright install
-   ```
+   
+```
 
 ### Running Tests
 Run all tests with:
-```sh
+```
+sh
 pytest
 ```
 

@@ -1,6 +1,9 @@
 from pages.base_page import BasePage
+from config.config import USER_NAME_1
 
 class Add_User(BasePage):
+
+
     team_xpath = '//*[@id="setup-training"]/a'
     users_list_xpath = '//*[@id="setup-training"]/ul/li[1]/a'
     add_user_btn_xpath = '//*[@id="btn-group"]/a'
@@ -32,7 +35,9 @@ class Add_User(BasePage):
         self.page.locator(self.name_btn_xpath).fill(name)
         self.page.locator(self.email_id_xpath).fill(email)
         self.page.locator(self.manager_roles_xpath).click()
-        self.page.locator(f'li:has-text("Aagam")').click()
+        self.page.locator(f'li:has-text("{USER_NAME_1}")').click()
+
+
         self.page.locator(f'#{self.save_btn_id}').click()
         cancel_btn = self.page.locator(self.cancel_btn_xpath)
         if cancel_btn.is_visible():

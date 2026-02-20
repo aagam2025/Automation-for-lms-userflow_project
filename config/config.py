@@ -1,6 +1,8 @@
 import os
 from dataclasses import dataclass
+from pathlib import Path
 from dotenv import load_dotenv
+
 
 
 # Load environment variables from .env file
@@ -17,18 +19,40 @@ LOGIN_PASSWORD_1 = os.getenv("LOGIN_PASSWORD_1", "")
 USER_NAME = os.getenv("USER_NAME", "Abc")
 USEREMAIL = os.getenv("USEREMAIL", "")
 COURSE_ID = int(os.getenv("COURSE_ID", "719"))
-CLIENT_ID = os.getenv("CLIENT_ID", "")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET", "")
-TOKEN = os.getenv("TOKEN", "")
+
+# -----------------------------  
+# Course Configuration  
+# -----------------------------  
+COURSE_FORMAT = os.getenv("COURSE_FORMAT", "XAPI")  
+COURSE_REF = os.getenv("COURSE_REF", "Test_Course")  
+COURSE_TITLE = os.getenv("COURSE_TITLE", "Test Course")  
+COURSE_ATTEMPTS = os.getenv("COURSE_ATTEMPTS", "3")  
+# Get project root (parent directory of config folder)
+PROJECT_ROOT = Path(__file__).parent.parent
+COURSE_FILE_PATH = os.getenv(
+    "COURSE_FILE_PATH", 
+    str(PROJECT_ROOT / "courses" / "Food Manager Training 2.2 - Minified - 03.zip")
+)
+
+UPLOAD_TIMEOUT_MS = int(os.getenv("UPLOAD_TIMEOUT_MS", "3000"))
+
+# -----------------------------  
+# User Configuration  
+# -----------------------------  
+USER_NAME_1 = os.getenv("USER_NAME_1", "Aagam")
+
+
+
 
 COURSE_PLAYER_PATH = "/local/courses/{course_id}/index.html"
+
 
 # -----------------------------
 # Timeouts (ms)
 # -----------------------------
 DEFAULT_TIMEOUT_MS = int(os.getenv("DEFAULT_TIMEOUT_MS", "30000"))
-SHORT_TIMEOUT_MS = int(os.getenv("SHORT_TIMEOUT_MS", "5000"))
-
+SHORT_TIMEOUT_MS = int(os.getenv("SHORT_TIMEOUT_MS", "2000"))
+COURSE_TIMEOUT_MS = int(os.getenv("COURSE_TIMEOUT_MS", "60000"))
 # -----------------------------
 # Headless toggle
 # Default = headed (visible)
